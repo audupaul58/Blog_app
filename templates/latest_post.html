@@ -1,0 +1,45 @@
+{% load static %}
+
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+
+
+
+<div class="container">
+
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" role="listitem">
+      {% for item in latest_post %}
+      <div  class="carousel-item  {% if forloop.first %}active {% endif %}" data-bs-interval="5000">
+        <a href="{{item.get_absolute_url}}">
+          <div class="card-image text-center  m-auto p-3 mb-2 border border-dark bg-gradient py-3 text-dark">
+            <div class="post-info"> <span class="text-uppercase">{{item.created_at.date}}</span>
+              
+            </div>
+            <img loading="lazy" decoding="async"  src="{{item.image.url}}" alt="Post Thumbnail" class="w-75" style="height: 25rem;">
+            <div class="card-img-overlay text-center m-auto p-3 mb-2  bg-gradient py-3 text-danger " style="height:7rem; width:20rem">
+              <h6 class="card-title bg-dark text-white">{{item.title}}</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor  %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  
+</div>
+  

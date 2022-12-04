@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+
+
+
+
+
+
+
+{% block content %}
+
+
+
+{% include 'latest_post.html' %}
+
+
+
+
+<div class="row d-flex p-5">
+    {% for item in items %}
+    <div class="col-md-6 mb-4">
+        <article class="card article-card article-card-sm h-100">
+          <a href="article.html">
+            <div class="card-image">
+              <div class="post-info"> <span class="text-uppercase">{{item.created_at.date}}</span>
+              </div>
+              <img loading="lazy" decoding="async" class="img-fluid img-thumbnail" src="{{item.image.url}}" alt="Post Thumbnail"  style="height:20rem; width: 30rem;">
+            </div>
+          </a>
+          <div class="card-body px-0 pb-0">
+            <ul class="post-meta mb-2">
+              <li> <a href="#!">{{item.category}}</a>
+              </li>
+            </ul>
+            <h4><a class="post-title" href="{{item.get_absolute_url}}">{{item.title}}</a></h4>
+            <p class="card-text">{{item.body| slice:"0:150"}}</p>
+            <div class="content"> <a class="read-more-btn" href="{{item.get_absolute_url}}">Read more</a>
+            </div>
+           
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+    {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+    
+</div>
+
+
+{% endblock content %}
+
