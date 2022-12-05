@@ -22,21 +22,66 @@
 
 
 <div class="container">
-    <div class="row">
-      <div class="col-md-3"></div>
-        <div class="col-md-6">
+
+<div class="row ">
+  <div class="col-lg-7 mx-auto">
+    <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+
+        <div class = "container">
           <form action="" method="post" class="form" enctype="multipart/form-data">
             {% csrf_token %}
+
+
             <h4 class="text-headert text-success m-3 text-center"><strong>Add ARTICLE<Article></Article></strong></h4>
     
             {% csrf_token %}
-            {{ form|crispy }}
-            {% buttons %}
-              <button type="submit" class="btn btn-primary">Submit</button>
-            {% endbuttons %}
+            <div class="row">
+              <div class="col">
+                {{form.title|as_crispy_field}}
+              </div>
+              <div class="col">
+                {{form.image| as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      {{form.body|as_crispy_field}}
+                      </div>
+                  </div>
+                  <div class="row d-flex justify-content-between">
+                    <div class="col">
+                      {{form.category|as_crispy_field}}
+                    </div>
+                    <div class="col">
+                      {{form.status|as_crispy_field }}
+                    </div>
+
+                    <div class="col-md-12">
+                    
+                      {{form.tags|as_crispy_field }}
+                  
+              </div>
+
+                  <div class="col-md-12">
+                    
+                    <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                        " value="SUBMIT" >
+                
+            </div>
         </form>
       </div>
-  <div class="col-md-3"></div>
+        </div>
+
+
+</div>
+    <!-- /.8 -->
+
+</div>
+<!-- /.row-->
+
+</div>
 </div>
 
 {% endblock content %}

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Article
+from .models import Article, Contact
 
 class Blog_form(ModelForm):
     
@@ -26,3 +26,9 @@ class Blog_form(ModelForm):
     class Meta:
         model = Article
         exclude = ('slug', "author" )
+
+class Contact_form(ModelForm):
+
+    class Meta:
+        model = Contact
+        exclude = ('date',)

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from .models import Article, Category, About, Contact
-from django.views.generic import  ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
+from.forms import Contact_form
+from .models import Article, Category, About
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 from taggit.models import Tag
 from django.db.models import Count
 from django.db.models import Q
@@ -9,8 +10,16 @@ from django.db.models import Q
 
 # Create your views here.
 
-class Contact_Us(TemplateView):
+class Contact_Us(CreateView):
+    form_class = Contact_form
     template_name = 'contact.html'
+    success_url = reverse_lazy('homepage')
+
+    def form_valid(self, form):
+        form.save()
+        return redirect(self.success_url)
+
+
    
 
 class ArticleView(ListView):
