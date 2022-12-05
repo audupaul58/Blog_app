@@ -1,12 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from .models import Article, Category
-from django.views.generic import  ListView, CreateView, UpdateView, DeleteView, DetailView
+from .models import Article, Category, About, Contact
+from django.views.generic import  ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 from taggit.models import Tag
 from django.db.models import Count
 from django.db.models import Q
 
+
 # Create your views here.
+
+class Contact_Us(TemplateView):
+    template_name = 'contact.html'
+   
 
 class ArticleView(ListView):
     paginate_by = 10
@@ -108,3 +113,9 @@ class Search_Page(ListView):
         query = self.request.GET.get('q') 
         object_list = Article.objects.filter(Q(title__icontains=query)| Q(body__icontains=query)) 
         return object_list
+
+
+class About_View(ListView):
+    template_name  = 'about.html'
+    model = About
+    context_object_name = 'about'

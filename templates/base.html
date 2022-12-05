@@ -17,7 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 	<meta name="description" content="This is meta description">
 	<meta name="author" content="Themefisher">
-	
+	<link rel="shortcut icon" href="{% static  'images/favicon.png' %}" type="image/x-icon">
+	<link rel="icon" href="{% static  'images/favicon.png' %}" type="image/x-icon">
   
   <!-- theme meta -->
   <meta name="theme-name" content="reporter" />
@@ -53,9 +54,9 @@
       </form>
       <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
         <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="about.html">About Me</a>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'about_us'%}">About Me</a>
           </li>
-          <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'contact_us'%}">Contact</a>
           </li>
           <li class="nav-item"> <a class="nav-link" href="{% url 'article_create'%}">Add Article</a>
           </li>
@@ -82,12 +83,14 @@
           <input id="search-query" class="form-control mb-5" name="q" placeholder="search here ..... "  type="search"  autocomplete="off">
         </form>
         <ul class="d-flex navbar-footer mb-0 list-unstyled">
-          <li class="nav-item my-0"> <a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item my-0"> <a class="nav-link" href="{% url 'about_us'%}">About</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="#">Elements</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="#">Privacy Policy</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="#">Terms Conditions</a></li>
          
         </ul>
+
+        
       </div>
     </div>
   </div>

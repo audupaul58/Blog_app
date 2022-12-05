@@ -75,3 +75,24 @@ class Comment(models.Model): # new
     
     def get_absolute_url(self):
         return reverse('article_list')
+
+class About(models.Model):
+    description = models.TextField()
+    
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    title = models.CharField(max_length=500)
+    message = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ('-date',)
+    
+    
+    
